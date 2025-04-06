@@ -1,0 +1,64 @@
+.button {
+  width: 5rem;
+  height: 5rem;
+  background-color: #455ce9;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 1.25rem;
+}
+
+.button:hover {
+  filter: brightness(0.9);
+}
+
+.ripple {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes rippleEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 500%;
+    height: 500%;
+    opacity: 0;
+  }
+}
+
+.line,
+.line_invisible {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  margin: 0.25rem 0;
+  transition: 0.4s;
+  transform-origin: center;
+}
+
+.line_invisible {
+  background: transparent;
+}
+
+[data-is-menu-open='true'] .line:nth-child(1) {
+  transform: translateY(calc(2px + 0.25rem)) rotate(-45deg);
+}
+
+[data-is-menu-open='true'] .line:nth-child(3) {
+  transform: translateY(calc(-2px - 0.25rem)) rotate(45deg);
+}
